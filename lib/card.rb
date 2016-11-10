@@ -1,4 +1,9 @@
 class Card
+	def self.build(suit, rank)
+		new(suit: suit, rank: rank)
+	end
+	private_class_method :new
+
 	def initialize(suit:, rank:)
 		@suit = suit
 		@rank = case rank
@@ -15,5 +20,19 @@ class Card
 
 	def rank
 		@rank
+	end
+
+	# Comparison
+	def ==(other)
+		rank == other.rank && suit == other.suit
+	end
+
+	def hash
+		[rank, suit].hash
+	end
+
+	# Hash Comparison
+	def eql?(other)
+		self == other
 	end
 end
