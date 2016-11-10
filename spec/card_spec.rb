@@ -22,14 +22,10 @@ describe Card do
   end
 
   context 'equality' do
-    def subject
-      @subject ||= card(suit: :spades, rank: 4)
-    end
+    subject { card(suit: :spades, rank: 4) }
 
     describe 'comparing against self' do
-      def other
-        @other ||= card(suit: :spades, rank: 4)
-      end
+      let (:other) { card(suit: :spades, rank: 4) }
 
       it 'is equal' do
         raise unless subject == other
@@ -49,9 +45,7 @@ describe Card do
     end
 
     describe 'comparing to a card of different suit' do
-      def other
-        @other ||= card(suit: :hearts, rank: 4)
-      end
+      let (:other) { card(suit: :hearts, rank: 4) }
 
       it_behaves_like 'an unequal card'
     end
