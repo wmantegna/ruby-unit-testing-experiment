@@ -36,4 +36,27 @@ class Card
 	def eql?(other)
 		self == other
 	end
+
+	def self.from_string(value)
+		# Get final character in string
+		short_suit = value[-1]
+
+		# Map it to a suit
+		suit = {
+			"H" => :hearts,
+			"D" => :diamonds,
+			"S" => :spades,
+			"C" => :clubs
+		}.fetch(short_suit)
+
+		# Map remainder to a face card, or fallback to numeric
+		rank = {
+			'A' => :ace,
+			'K' => :king,
+			'Q' => :queen,
+			'J' => :jack
+		}.fetch(value[0]) { value[0..-2].to_i }
+
+		Card.build(suit, rank)
+	end
 end
