@@ -82,4 +82,12 @@ describe Card do
       expect(lower.rank).to be < higher.rank
     end
   end
+  describe 'an ace' do
+    it 'ranks higher than a king' do
+      lower = card(rank: :king)
+      higher  = card(rank: :ace)
+
+      expect(lower.rank).to be < higher.rank
+    end
+  end
 end
